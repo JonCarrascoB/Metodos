@@ -307,14 +307,8 @@ namespace Metodos
                 {
                     numMult++;
                 }
-
-                int numPerf = EsPerfecto(numAlm);
-               
-
-
-
-
             }
+            int numPerf = EsPerfecto(numAlm);
 
             Console.WriteLine("Hay " + numPar + " numeros pares");
             Console.WriteLine("Hay " + numPerf + " numeros perfectos");
@@ -327,14 +321,29 @@ namespace Metodos
         public static int EsPerfecto(int introAlm)
         {
             //int div = 0;
+            int divSuma = 0;
+            int[] divArr = new int[introAlm];
+
             for (int i=introAlm; i>0; i--)
             {
-                if (introAlm%i ==0)
+                if (introAlm%i == 0)
                 {
-                    int [] divArr =
+                    divArr[i]= introAlm;
                 }
             }
-
+            for (int i=0; i<introAlm, i++)
+            {
+                divSuma = divArr[i] + divSuma;
+            }
+            if (divSuma == introAlm)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
         
 
