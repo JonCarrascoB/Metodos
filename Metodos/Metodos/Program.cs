@@ -289,115 +289,155 @@ namespace Metodos
         //Cantidad de números perfectos
         //Cantidad de múltiplos de 5
 
-
-        //Ejercicio 10:
-        //Diseña  un  método  pedirMes().  Solicita  un  número  de  mes  y  valida  que  se  trata  de  un número de mes correcto.
-        //Devuelve dicho número de mes. 
-        //Diseña un método pedirAnio(). Recibe como parámetros los límites entre los que debe de estar el año que se debe solicitar
-        //por teclado. Devuelve el año entre dichos límites.
-        //Diseña un método pedirDia(). Solicita un número de día por teclado, y dado un mes y un año válidos 
-        //recibidos por  parámetro, devuelve un  día correcto.  (Nota:  puede llamar  al método esBisiesto)
-        //Crea un nuevo método mostrarSiguienteDia() que recibe un día, un mes y un año válido (estos tres datos forman la fecha actual) 
-        //y muestra en pantalla 2 fechas: la actual y la del día siguiente, a calcular a partir del día actual.
-        //Pruébalo en  un programa  que pida  al usuario  una fecha(pedirDia(), pedirMes(), pedirAnio()) 
-        //y muestre la fecha del día siguiente.
-        //Ejemplo:  
-        //Fecha actual: 31/12/2011 
-        //Día siguiente: 1/1/2012 
-
         static void Main(string[] args)
         {
-            Console.WriteLine("introduzca numero de mes");
-            int mes = Convert.ToInt32(Console.ReadLine());
-            int valorMes = PedirMes(mes);
-            Console.WriteLine("El mes es el " + valorMes);
-            Console.WriteLine("introduzca año limite inferior");
-            int annoMin = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Introduzca año limite superior");
-            int annoMax = Convert.ToInt32(Console.ReadLine());
-
-            if (annoMin>annoMax)
+            int numAlm = 1;
+            int numPar = 0;
+            int numMult = 0;
+            while (numAlm != 0)
             {
-                Console.WriteLine("Error, su limite minimo es superior al maximo, se le modifica al modo correcto");
-                int cambio = annoMin;
-                annoMin = annoMax;
-                annoMax = cambio;
+                Console.WriteLine("introduzca su numero, por favor");
+                numAlm = Convert.ToInt32(Console.ReadLine());
+
+                if ((numAlm % 2) == 0)
+                {
+                    numPar++;
+                }
+                else if ((numAlm % 5) ==0)
+                {
+                    numMult++;
+                }
+
+                int numPerf = EsPerfecto(numAlm);
+               
+
+
+
+
             }
-            int Anno = PedirAnno(annoMin,annoMax);
-            Console.WriteLine("Su año es: " + Anno);
 
-            Console.WriteLine("Introduzca el numero del día");
-            int dia = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Hay " + numPar + " numeros pares");
+            Console.WriteLine("Hay " + numPerf + " numeros perfectos");
+            Console.WriteLine("Hay " + numMult + " multiplos de 5");
 
-            
-
-            int diaCorrecto = PedirDia(dia, valorMes, Anno);
-            Console.WriteLine("Fecha Actual es: " + diaCorrecto + "/" + valorMes + "/" + Anno);
-
-            //Introducir el Array
-            int[] mesesArr = PedirArr(diaCorrecto, valorMes, Anno);
-
-            if (diaCorrecto == mesesArr[valorMes-1])
-            {
-                Console.WriteLine("Fecha del dia siguiente es: 01" + "/" + valorMes + "/" + Anno);
-            }
-            else
-            {
-                Console.WriteLine("Fecha dia siguiente es: " + (diaCorrecto + 1) + "/" + valorMes + "/" + Anno);
-            }
 
             Console.ReadLine();
         }
-        public static int PedirMes (int introMes)
+        
+        public static int EsPerfecto(int introAlm)
         {
-            while (introMes<=0 || introMes>12)
+            //int div = 0;
+            for (int i=introAlm; i>0; i--)
             {
-                Console.WriteLine("Error, inserte un numero de mes correcto");
-                introMes = Convert.ToInt32(Console.ReadLine());
+                if (introAlm%i ==0)
+                {
+                    int [] divArr =
+                }
             }
-            return introMes;
-        }
-        public static int PedirAnno (int minAnno,int maxAnno)
-        {
-            Random rndm = new Random();
-            int annoRndm = rndm.Next(minAnno, maxAnno + 1);
-            return annoRndm;
-        }
-        public static int PedirDia (int introDia, int introMes, int introAnno)
-        {
-            bool leapYear = DateTime.IsLeapYear(introAnno);
-            int[] mesesArr = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //La posición del mes es 1 menos que la del mes real
-
-            if (leapYear)
-            {
-                mesesArr[1] = 29;
-            }
-
-            while (introDia < mesesArr[introMes -1] || introMes <=0)
-            {
-                Console.WriteLine("Su día no corresponde a un día real del mes definido: " + intromes);
-                Console.WriteLine("Inserte u nuevo día correcto, por favor");
-                introDia = Convert.ToInt32(Console.ReadLine());
-            }
-            return mesesArr[12];
 
         }
-        public static int PedirArr(int introDia, int introMes, int introAnno)
-        {
-            bool leapYear = DateTime.IsLeapYear(introAnno);
-            int[] mesesArr = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //La posición del mes es 1 menos que la del mes real
+        
 
-            if (leapYear)
-            {
-                mesesArr[1] = 29;
-            }
 
-            while (introDia < mesesArr[introMes - 1] || introMes <= 0)
-            {
-                Console.WriteLine("Su día no corresponde a un día real del mes definido: " + intromes);
-                Console.WriteLine("Inserte u nuevo día correcto, por favor");
-                introDia = Convert.ToInt32(Console.ReadLine());
-            }
-            return mesesArr[12];
-        }
+            //Ejercicio 10:
+            //Diseña  un  método  pedirMes().  Solicita  un  número  de  mes  y  valida  que  se  trata  de  un número de mes correcto.
+            //Devuelve dicho número de mes. 
+            //Diseña un método pedirAnio(). Recibe como parámetros los límites entre los que debe de estar el año que se debe solicitar
+            //por teclado. Devuelve el año entre dichos límites.
+            //Diseña un método pedirDia(). Solicita un número de día por teclado, y dado un mes y un año válidos 
+            //recibidos por  parámetro, devuelve un  día correcto.  (Nota:  puede llamar  al método esBisiesto)
+            //Crea un nuevo método mostrarSiguienteDia() que recibe un día, un mes y un año válido (estos tres datos forman la fecha actual) 
+            //y muestra en pantalla 2 fechas: la actual y la del día siguiente, a calcular a partir del día actual.
+            //Pruébalo en  un programa  que pida  al usuario  una fecha(pedirDia(), pedirMes(), pedirAnio()) 
+            //y muestre la fecha del día siguiente.
+            //Ejemplo:  
+            //Fecha actual: 31/12/2011 
+            //Día siguiente: 1/1/2012 
+
+        //    static void Main(string[] args)
+        //{
+        //    Console.WriteLine("introduzca numero de mes");
+        //    int mes = Convert.ToInt32(Console.ReadLine());
+        //    int valorMes = PedirMes(mes);
+        //    Console.WriteLine("El mes es el " + valorMes);
+        //    Console.WriteLine("introduzca año limite inferior");
+        //    int annoMin = Convert.ToInt32(Console.ReadLine());
+        //    Console.WriteLine("Introduzca año limite superior");
+        //    int annoMax = Convert.ToInt32(Console.ReadLine());
+
+        //    if (annoMin > annoMax)
+        //    {
+        //        Console.WriteLine("Error, su limite minimo es superior al maximo, se le modifica al modo correcto");
+        //        int cambio = annoMin;
+        //        annoMin = annoMax;
+        //        annoMax = cambio;
+        //    }
+        //    int Anno = PedirAnno(annoMin, annoMax);
+        //    Console.WriteLine("Su año es: " + Anno);
+
+        //    Console.WriteLine("Introduzca el numero del día");
+        //    int dia = Convert.ToInt32(Console.ReadLine());
+
+        //    int diaCorrecto = PedirDia(dia, valorMes, Anno);
+        //    Console.WriteLine("Fecha Actual es: " + diaCorrecto + "/" + valorMes + "/" + Anno);
+
+        //    if (diaCorrecto<28)
+        //    {
+        //        Console.WriteLine("Fecha dia siguiente es: " + (diaCorrecto + 1) + "/" + valorMes + "/" + Anno);
+        //    }
+        //    else if(diaCorrecto==29 && valorMes==2)
+        //    {
+        //        Console.WriteLine("Fecha dia siguiente es: 01"  + "/" + (valorMes +1) + "/" + Anno);
+        //    }
+        //    else if(valorMes==4 || valorMes == 6 || valorMes == 9 || valorMes == 11)
+        //    {
+        //        Console.WriteLine("Fecha dia siguiente es: 01" + "/" + (valorMes + 1) + "/" + Anno);
+        //    }
+        //    else if(valorMes == 1 || valorMes == 3 || valorMes == 5 || valorMes == 7 || valorMes == 8 || valorMes == 10)
+        //    {
+        //        Console.WriteLine("Fecha dia siguiente es: 01" + "/" + (valorMes + 1) + "/" + Anno);
+        //    }
+        //    else if(valorMes==12)
+        //    {
+        //        Console.WriteLine("Fecha dia siguiente es: 01" + "/" + "01" + "/" + (Anno+1));
+        //    }
+        //    Console.ReadLine();
+
+        //}
+        //public static int PedirMes(int introMes)
+        //{
+        //    while (introMes <= 0 || introMes > 12)
+        //    {
+        //        Console.WriteLine("Error, inserte un numero de mes correcto");
+        //        introMes = Convert.ToInt32(Console.ReadLine());
+        //    }
+        //    return introMes;
+        //}
+        //public static int PedirAnno(int minAnno, int maxAnno)
+        //{
+        //    Random rndm = new Random();
+        //    int annoRndm = rndm.Next(minAnno, maxAnno + 1);
+        //    return annoRndm;
+        //}
+        //public static int PedirDia(int introDia, int introMes, int introAnno)
+        //{
+        //    bool leapYear = DateTime.IsLeapYear(introAnno);
+        //    int[] mesesArr = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //La posición del mes es 1 menos que la del mes real
+
+        //    if (leapYear)
+        //    {
+        //        mesesArr[1] = 29;
+        //    }
+
+        //    while (introDia > mesesArr[introMes - 1] || introMes <= 0)
+        //    {
+        //        Console.WriteLine("Su día no corresponde a un día real del mes definido: " + introMes);
+        //        Console.WriteLine("Inserte un nuevo día correcto, por favor");
+        //        introDia = Convert.ToInt32(Console.ReadLine());
+        //    }
+        //    return introDia;
+        //}
+       
+    }
 }
+
